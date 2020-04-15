@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SushiKit from "../../components/SushiBuilder/SushiKit/SushiKit";
 import classes from "./SushiBuilder.module.css";
 import SushiControls from "../../components/SushiBuilder/SushiControls/SushiControls";
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummary";
 
 const PRICES = {
   avocadoMaki: 7,
@@ -62,6 +64,9 @@ export default () => {
         addIngredient={addIngredient}
         removeIngredient={removeIngredient}
       />
+      <Modal>
+        <OrderSummary ingredients={ingredients} />
+      </Modal>
     </div>
   );
 };
