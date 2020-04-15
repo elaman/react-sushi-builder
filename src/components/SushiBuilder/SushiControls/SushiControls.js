@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./SushiControls.module.css";
 import SushiControl from "./SushiControl/SushiControl";
+import Button from "../../UI/Button/Button";
 
 const CONTROLS = [
   { label: "Avocado Maki", type: "avocadoMaki" },
@@ -31,13 +32,9 @@ export default ({
   return (
     <div className={classes.SushiControls}>
       {controlsOutput}
-      <button
-        onClick={startOrder}
-        disabled={!canOrder}
-        className={classes.orderButton}
-      >
-        ORDER
-      </button>
+      <Button click={startOrder} enabled={canOrder}>
+        Order
+      </Button>
     </div>
   );
 };

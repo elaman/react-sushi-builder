@@ -1,0 +1,18 @@
+.Button {
+  border: none;
+  background-color: white;
+  color: #EC6F31;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Nanum Brush Script', cursive;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.Button:disabled {
+  opacity: .5;
+}
+.Button:not(:disabled):hover {
+  opacity: .8;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./OrderSummary.module.css";
+import Button from "../../UI/Button/Button";
 
 const LABELS = {
   avocadoMaki: "Avocado Maki",
@@ -25,6 +26,8 @@ export default ({ ingredients }) => {
       <p>Congratulations! You've built a best sushi-kit of all times!</p>
       <ul>{ingredientsOutput}</ul>
       <p>Would you like to checkout?</p>
+      <Button>Checkout</Button>
+      <Button>Cancel</Button>
     </div>
   );
 };
