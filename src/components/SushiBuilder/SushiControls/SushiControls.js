@@ -11,7 +11,13 @@ const CONTROLS = [
   { label: "Salmon Maki", type: "salmonMaki" },
 ];
 
-export default ({ canOrder, ingredients, addIngredient, removeIngredient }) => {
+export default ({
+  canOrder,
+  ingredients,
+  addIngredient,
+  removeIngredient,
+  startOrder,
+}) => {
   const controlsOutput = CONTROLS.map((control) => (
     <SushiControl
       key={control.type}
@@ -25,7 +31,11 @@ export default ({ canOrder, ingredients, addIngredient, removeIngredient }) => {
   return (
     <div className={classes.SushiControls}>
       {controlsOutput}
-      <button disabled={!canOrder} className={classes.orderButton}>
+      <button
+        onClick={startOrder}
+        disabled={!canOrder}
+        className={classes.orderButton}
+      >
         ORDER
       </button>
     </div>
