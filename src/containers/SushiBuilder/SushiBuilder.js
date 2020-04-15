@@ -6,12 +6,12 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummary";
 
 const PRICES = {
-  avocadoMaki: 7,
-  avocadoTunaRoll: 10,
-  californiaMaki: 8,
-  californiaTunaRoll: 11,
-  ikuraMaki: 15,
-  salmonMaki: 12,
+  avocadoMaki: 6.9,
+  avocadoTunaRoll: 10.12,
+  californiaMaki: 8.42,
+  californiaTunaRoll: 11.11,
+  ikuraMaki: 15.32,
+  salmonMaki: 12.1,
 };
 
 export default () => {
@@ -83,6 +83,7 @@ export default () => {
           ingredients={ingredients}
           finishOrder={finishOrder}
           cancelOrder={cancelOrder}
+          price={price}
         />
       </Modal>
     </div>
