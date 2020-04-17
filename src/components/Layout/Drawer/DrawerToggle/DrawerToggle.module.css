@@ -1,0 +1,22 @@
+.DrawerToggle {
+  height: 70px;
+  padding: 16px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-right: .5rem;
+}
+.DrawerToggle > div {
+  height: 3px;
+  width: 30px;
+  background-color: white;
+}
+.DrawerToggle > div:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+@media (min-width: 500px) {
+  .DrawerToggle {
+    display: none;
+  }
+}
