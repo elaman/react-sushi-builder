@@ -24,3 +24,11 @@
 .salmonMaki {
   background-image: url(../../../../assets/salmonMaki.svg);
 }
+
+@media (min-width: 900px) {
+  .Sushi {
+    width: 50px;
+    height: 62px;
+    margin-top: -24px;
+  }
+}

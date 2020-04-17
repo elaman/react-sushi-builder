@@ -1,9 +1,9 @@
 .SushiControls {
   border: 3px solid #D35A25;
   background-color: #EC6F31;
-  width: 300px;
-  padding-top: .5rem;
-  padding-left: .5rem;
+
+  padding: 1rem 2rem;
+  margin: 0 .5rem;
 
   display: flex;
   flex-flow: column nowrap;

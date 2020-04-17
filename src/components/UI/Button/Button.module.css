@@ -7,7 +7,7 @@
   cursor: pointer;
   font-family: 'Nanum Brush Script', cursive;
   padding: 5px 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 .Button:disabled {
