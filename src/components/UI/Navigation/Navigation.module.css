@@ -1,6 +1,14 @@
 .Navigation {
   list-style-type: none;
   display: flex;
-  margin: 0 12px;
+  flex-direction: column;
+  margin: 10px 0;
   padding: 0;
+}
+
+@media (min-width: 500px) {
+  .Navigation {
+    margin: 0 12px;
+    flex-direction: row;
+  }
 }

@@ -8,3 +8,9 @@
   left: 0;
   box-shadow: 0 0 5px rgba(0, 0, 0, .5);
 }
+
+@media (min-width: 500px) {
+  .Drawer {
+    display: none;
+  }
+}
