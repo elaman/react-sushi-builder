@@ -1,8 +1,10 @@
 import React from 'react';
 import classes from './Navigation.module.css';
+import NavigationItem from './NavigationItem/NavigationItem';
 
 export default () => (
-  <div className={classes.Navigation}>
-    Navigation
-  </div>
+  <ul className={classes.Navigation}>
+    <NavigationItem>Sushi Builder</NavigationItem>
+    <NavigationItem>Checkout</NavigationItem>
+  </ul>
 );
