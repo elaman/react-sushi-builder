@@ -1,0 +1,22 @@
+.NavigationItem a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  height: 70px;
+
+  font-family: 'Nanum Brush Script', cursive;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  border-top: 5px solid transparent;
+
+  transition: all .2s ease-in-out;
+}
+.NavigationItem a:hover {
+  border-top-color: white;
+  background-color: rgba(255, 255, 255, .3);
+}
+.NavigationItem .active {
+  border-top-color: white;
+  background-color: rgba(255, 255, 255, .1);
+}
