@@ -5,6 +5,7 @@ import SushiControls from "../../components/SushiBuilder/SushiControls/SushiCont
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummary";
 import axios from "../../axios";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const PRICES = {
   avocadoMaki: 6.9,
@@ -88,7 +89,7 @@ export default () => {
     }
   }
 
-  let orderSummary = "Loading...";
+  let orderSummary = <Spinner />;
   if (!loading) {
     orderSummary = (
       <OrderSummary
