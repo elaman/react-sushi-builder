@@ -4,6 +4,7 @@ import classes from "./SushiBuilder.module.css";
 import SushiControls from "../../components/SushiBuilder/SushiControls/SushiControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummary";
+import axios from "../../axios";
 
 const PRICES = {
   avocadoMaki: 6.9,
@@ -43,7 +44,21 @@ export default () => {
   }
 
   function finishOrder() {
-    alert("You are on the checkout page!");
+    const order = {
+      ingredients: ingredients,
+      price: price,
+      delivery: "Fast",
+      customer: {
+        name: "Bakyt",
+        phone: "0700700700",
+        address: {
+          street: "123 Gebze",
+          city: "Karakol",
+        },
+      },
+    };
+
+    axios.post("/orders.json", order).then((response) => console.log(response));
   }
 
   function addIngredient(type) {
