@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SushiKit from "../../components/SushiBuilder/SushiKit/SushiKit";
 import classes from "./SushiBuilder.module.css";
 import SushiControls from "../../components/SushiBuilder/SushiControls/SushiControls";
@@ -18,14 +18,7 @@ const PRICES = {
 };
 
 export default withErrorHandler(() => {
-  const [ingredients, setIngredients] = useState({
-    avocadoMaki: 0,
-    avocadoTunaRoll: 0,
-    californiaMaki: 0,
-    californiaTunaRoll: 0,
-    ikuraMaki: 0,
-    salmonMaki: 0,
-  });
+  const [ingredients, setIngredients] = useState(null);
   const [price, setPrice] = useState(100);
   const [canOrder, setCanOrder] = useState(false);
   const [isOrdering, setIsOrdering] = useState(false);
@@ -90,6 +83,28 @@ export default withErrorHandler(() => {
     }
   }
 
+  useEffect(() => {
+    axios
+      .get("/ingredients.json")
+      .then((response) => setIngredients(response.data));
+  }, []);
+
+  let output = <Spinner />;
+  if (ingredients) {
+    output = (
+      <>
+        <SushiKit price={price} ingredients={ingredients} />
+        <SushiControls
+          startOrder={startOrder}
+          canOrder={canOrder}
+          ingredients={ingredients}
+          addIngredient={addIngredient}
+          removeIngredient={removeIngredient}
+        />
+      </>
+    );
+  }
+
   let orderSummary = <Spinner />;
   if (isOrdering && !loading) {
     orderSummary = (
@@ -104,14 +119,7 @@ export default withErrorHandler(() => {
 
   return (
     <div className={classes.SushiBuilder}>
-      <SushiKit price={price} ingredients={ingredients} />
-      <SushiControls
-        startOrder={startOrder}
-        canOrder={canOrder}
-        ingredients={ingredients}
-        addIngredient={addIngredient}
-        removeIngredient={removeIngredient}
-      />
+      {output}
       <Modal show={isOrdering} hideCallback={cancelOrder}>
         {orderSummary}
       </Modal>
