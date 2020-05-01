@@ -9,19 +9,19 @@ const withErrorHandler = (WrappedComponent, axios) => {
       setError(false);
     }
 
-    useEffect(() => {
-      const requestInterceptor = axios.interceptors.request.use((request) => {
-        setError(false);
-        return request;
-      });
-      const responseInterceptor = axios.interceptors.response.use(
-        (response) => response,
-        (error) => setError(error)
-      );
+    const requestInterceptor = axios.interceptors.request.use((request) => {
+      setError(false);
+      return request;
+    });
+    const responseInterceptor = axios.interceptors.response.use(
+      (response) => response,
+      (error) => setError(error)
+    );
 
+    useEffect(() => {
       return () => {
-        axios.interceptors.request.detach(requestInterceptor);
-        axios.interceptors.response.detach(responseInterceptor);
+        axios.interceptors.request.eject(requestInterceptor);
+        axios.interceptors.response.eject(responseInterceptor);
       };
     }, []);
 
