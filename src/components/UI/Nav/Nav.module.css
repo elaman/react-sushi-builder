@@ -1,4 +1,4 @@
-.Navigation {
+.Nav {
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
 }
 
 @media (min-width: 500px) {
-  .Navigation {
+  .Nav {
     margin: 0 12px;
     flex-direction: row;
   }
