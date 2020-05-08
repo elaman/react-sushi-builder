@@ -15,7 +15,10 @@ const withErrorHandler = (WrappedComponent, axios) => {
     });
     const responseInterceptor = axios.interceptors.response.use(
       (response) => response,
-      (error) => setError(error)
+      (error) => {
+        setError(error);
+        return Promise.reject(error);
+      }
     );
 
     useEffect(() => {
