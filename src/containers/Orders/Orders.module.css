@@ -1,0 +1,8 @@
+.Orders {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.5em;
+  max-width: 850px;
+  margin: 0 auto;
+  justify-content: space-between;
+}

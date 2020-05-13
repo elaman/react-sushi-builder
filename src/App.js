@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./containers/Layout/Layout";
 import SushiBuilder from "./containers/SushiBuilder/SushiBuilder";
 import Checkout from "./containers/Checkout/Checkout";
+import Orders from "./containers/Orders/Orders";
 import "./App.css";
 
 export default () => {
@@ -18,6 +19,9 @@ export default () => {
           </Route>
           <Route path="/checkout">
             <Checkout />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
       </Layout>

@@ -5,3 +5,11 @@ body {
   margin: 0;
   padding: 0;
 }
+h1 {
+  color: #ec6f31;
+  font-family: "Nanum Brush Script", cursive;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  margin-top: 0;
+}
