@@ -12,19 +12,11 @@ const CONTROLS = [
   { label: "Salmon Maki", type: "salmonMaki" },
 ];
 
-export default ({
-  canOrder,
-  ingredients,
-  addIngredient,
-  removeIngredient,
-  startOrder,
-}) => {
+export default ({ canOrder, ingredients, startOrder }) => {
   const controlsOutput = CONTROLS.map((control) => (
     <SushiControl
       key={control.type}
       control={control}
-      addIngredient={addIngredient}
-      removeIngredient={removeIngredient}
       disabled={ingredients[control.type] === 0}
     />
   ));
