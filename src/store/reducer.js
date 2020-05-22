@@ -1,19 +1,36 @@
 import * as actions from "./actions";
 
 const initialState = {
-  ingredients: null,
+  ingredients: {
+    avocadoMaki: 1,
+    avocadoTunaRoll: 1,
+    californiaMaki: 1,
+    californiaTunaRoll: 1,
+    ikuraMaki: 1,
+    salmonMaki: 1,
+  },
   price: 100,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.ADD_INGREDIENT:
-      console.log("ingredient added");
-      return state;
+      return {
+        ...state,
+        ingredients: {
+          ...state.ingredients,
+          [action.ingredient]: state.ingredients[action.ingredient] + 1,
+        },
+      };
 
     case actions.REMOVE_INGREDIENT:
-      console.log("ingredient removed");
-      return state;
+      return {
+        ...state,
+        ingredients: {
+          ...state.ingredients,
+          [action.ingredient]: state.ingredients[action.ingredient] - 1,
+        },
+      };
 
     default:
       return state;
