@@ -19,21 +19,6 @@ export default withErrorHandler(() => {
     return !canOrder ? number > 0 : canOrder;
   }, false);
 
-  function finishOrder() {
-    const queryParams = Object.keys(ingredients).map(
-      (ingredient) =>
-        encodeURIComponent(ingredient) +
-        "=" +
-        encodeURIComponent(ingredients[ingredient])
-    );
-    queryParams.push("price=" + encodeURIComponent(price.toFixed(2)));
-
-    history.push({
-      pathname: "/checkout",
-      search: queryParams.join("&"),
-    });
-  }
-
   /*
   useEffect(() => {
     axios
@@ -62,7 +47,7 @@ export default withErrorHandler(() => {
     orderSummary = (
       <OrderSummary
         ingredients={ingredients}
-        finishOrder={finishOrder}
+        finishOrder={() => history.push("/checkout")}
         cancelOrder={() => setIsOrdering(false)}
         price={price}
       />
@@ -73,7 +58,7 @@ export default withErrorHandler(() => {
     <div className={classes.SushiBuilder}>
       <h1>Sushi builder</h1>
       {output}
-      <Modal show={isOrdering} hideCallback={cancelOrder}>
+      <Modal show={isOrdering} hideCallback={() => setIsOrdering(false)}>
         {orderSummary}
       </Modal>
     </div>
