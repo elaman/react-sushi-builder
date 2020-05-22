@@ -10,19 +10,8 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import classes from "./SushiBuilder.module.css";
 import { useSelector } from "react-redux";
 
-const PRICES = {
-  avocadoMaki: 6.9,
-  avocadoTunaRoll: 10.12,
-  californiaMaki: 8.42,
-  californiaTunaRoll: 11.11,
-  ikuraMaki: 15.32,
-  salmonMaki: 12.1,
-};
-
 export default withErrorHandler(() => {
-  const { ingredients } = useSelector((state) => state);
-
-  const [price, setPrice] = useState(100);
+  const { ingredients, price } = useSelector((state) => state);
   const [canOrder, setCanOrder] = useState(false);
   const [isOrdering, setIsOrdering] = useState(false);
   const history = useHistory();
@@ -63,8 +52,8 @@ export default withErrorHandler(() => {
     //setIngredients(newIngredients);
     checkCanOrder(newIngredients);
 
-    const newPrice = price + PRICES[type];
-    setPrice(newPrice);
+    //const newPrice = price + PRICES[type];
+    //setPrice(newPrice);
   }
 
   function removeIngredient(type) {
@@ -74,8 +63,8 @@ export default withErrorHandler(() => {
       //setIngredients(newIngredients);
       checkCanOrder(newIngredients);
 
-      const newPrice = price - PRICES[type];
-      setPrice(newPrice);
+      //const newPrice = price - PRICES[type];
+      //setPrice(newPrice);
     }
   }
 
