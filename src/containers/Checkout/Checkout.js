@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useLocation, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory, Route } from "react-router-dom";
 import axios from "../../axios";
 import CheckoutSummary from "../../components/Checkout/CheckoutSummary/CheckoutSummary";
 import classes from "./Checkout.module.css";
