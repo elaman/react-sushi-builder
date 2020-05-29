@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "../../axios";
+import { load } from "../../store/actions/builder";
 import SushiKit from "../../components/SushiBuilder/SushiKit/SushiKit";
 import SushiControls from "../../components/SushiBuilder/SushiControls/SushiControls";
 import Modal from "../../components/UI/Modal/Modal";
@@ -8,8 +10,6 @@ import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummar
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import classes from "./SushiBuilder.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { load } from "../../store/actions/builder";
 
 export default withErrorHandler(() => {
   const { ingredients, price } = useSelector((state) => state);
@@ -46,7 +46,6 @@ export default withErrorHandler(() => {
       </>
     );
   }
-
 
   return (
     <div className={classes.SushiBuilder}>
