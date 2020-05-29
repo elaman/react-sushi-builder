@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import axios from "../../axios";
 import Order from "../../components/Orders/Order/Order";
 import classes from "./Orders.module.css";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import withAxios from "../../hoc/withAxios/withAxios";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { load } from "../../store/actions/orders";
 import { useDispatch, useSelector } from "react-redux";
 
-export default withErrorHandler(() => {
+export default withAxios(() => {
   const dispatch = useDispatch();
   const { orders } = useSelector(state => state.orders);
 

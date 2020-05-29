@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "../../axios";
+import withAxios from "../../hoc/withAxios/withAxios";
 import { load } from "../../store/actions/builder";
 import SushiKit from "../../components/SushiBuilder/SushiKit/SushiKit";
 import SushiControls from "../../components/SushiBuilder/SushiControls/SushiControls";
 import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/SushiBuilder/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import classes from "./SushiBuilder.module.css";
 
-export default withErrorHandler(() => {
+export default withAxios(() => {
   const { ingredients, price } = useSelector(state => state.builder);
   const [isOrdering, setIsOrdering] = useState(false);
   const history = useHistory();

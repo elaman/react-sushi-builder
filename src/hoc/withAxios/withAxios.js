@@ -4,6 +4,7 @@ import Modal from "../../components/UI/Modal/Modal";
 const withErrorHandler = (WrappedComponent, axios) => {
   return (props) => {
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     function hideModal() {
       setError(false);
@@ -11,11 +12,16 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
     const requestInterceptor = axios.interceptors.request.use((request) => {
       setError(false);
+      setLoading(true);
       return request;
     });
     const responseInterceptor = axios.interceptors.response.use(
-      (response) => response,
+      (response) => {
+        setLoading(false);
+        return response;
+      },
       (error) => {
+        setLoading(false);
         setError(error);
         return Promise.reject(error);
       }
@@ -33,7 +39,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         <Modal show={error} hideCallback={hideModal}>
           {error ? error.message : "Unknown error"}
         </Modal>
-        <WrappedComponent {...props} />
+        <WrappedComponent loading={loading} {...props} />
       </>
     );
   };

@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory, Route, Redirect } from "react-router-dom";
 import axios from "../../axios";
 import CheckoutSummary from "../../components/Checkout/CheckoutSummary/CheckoutSummary";
 import classes from "./Checkout.module.css";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
-import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
+import withAxios from "../../hoc/withAxios/withAxios";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { useSelector } from "react-redux";
 
-export default withErrorHandler(() => {
+export default withAxios(({ loading }) => {
   const history = useHistory();
   const { ingredients, price } = useSelector(state => state.builder);
-  const [loading, setLoading] = useState(false);
 
   function checkoutCancel() {
     history.push("/builder");
@@ -22,17 +21,13 @@ export default withErrorHandler(() => {
   }
 
   function checkoutFinish(data) {
-    setLoading(true);
     axios
       .post("/orders.json", {
         ingredients,
         price,
         details: data,
       })
-      .then((response) => {
-        setLoading(false);
-        history.replace("/");
-      });
+      .then(() => history.replace("/"));
   }
 
   let formOutput = <Spinner />;
