@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Route } from "react-router-dom";
+import { useHistory, Route, Redirect } from "react-router-dom";
 import axios from "../../axios";
 import CheckoutSummary from "../../components/Checkout/CheckoutSummary/CheckoutSummary";
 import classes from "./Checkout.module.css";
@@ -40,14 +40,21 @@ export default withErrorHandler(() => {
     formOutput = <CheckoutForm checkoutFinish={checkoutFinish} />;
   }
 
-  return (
-    <div className={classes.Checkout}>
+  let summaryOutput = <Redirect to="/" />
+  if (ingredients) {
+    summaryOutput = (
       <CheckoutSummary
         ingredients={ingredients}
         price={price}
         checkoutCancel={checkoutCancel}
         checkoutContinue={checkoutContinue}
       />
+    )
+  }
+
+  return (
+    <div className={classes.Checkout}>
+      {summaryOutput}
       <Route path="/checkout/form">{formOutput}</Route>
     </div>
   );

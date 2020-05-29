@@ -2,11 +2,13 @@ import React from "react";
 import classes from "./Order.module.css";
 
 export default ({ price, ingredients, details }) => {
-  const ingredientsOutput = Object.keys(ingredients).map((ingredient) => (
-    <span key={ingredient} className={classes.ingredient}>
-      {ingredients[ingredient].label} ({ingredients[ingredient].quantity})
-    </span>
-  ));
+  const ingredientsOutput = Object.keys(ingredients)
+    .filter(ingredient => ingredients[ingredient].quantity > 0)
+    .map(ingredient => (
+      <span key={ingredient} className={classes.ingredient}>
+        {ingredients[ingredient].label} ({ingredients[ingredient].quantity})
+      </span>
+    ));
 
   const detailsOutput = (
     <div className={classes.details}>
