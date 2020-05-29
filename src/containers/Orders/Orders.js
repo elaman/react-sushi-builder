@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "../../axios";
 import Order from "../../components/Orders/Order/Order";
 import classes from "./Orders.module.css";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import { load } from "../../store/actions/orders";
+import { useDispatch, useSelector } from "react-redux";
 
 export default withErrorHandler(() => {
-  const [orders, setOrders] = useState(false);
+  const dispatch = useDispatch();
+  const { orders } = useSelector(state => state.orders);
 
   useEffect(() => {
-    axios
-      .get("/orders.json")
-      .then((response) => {
-        setOrders(response.data);
-      })
-      .catch((error) => {});
-  }, []);
+    load(dispatch);
+  }, [dispatch]);
 
   let ordersOutput = <Spinner />;
   if (orders) {

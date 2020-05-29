@@ -12,7 +12,7 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import classes from "./SushiBuilder.module.css";
 
 export default withErrorHandler(() => {
-  const { ingredients, price } = useSelector((state) => state);
+  const { ingredients, price } = useSelector(state => state.builder);
   const [isOrdering, setIsOrdering] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
