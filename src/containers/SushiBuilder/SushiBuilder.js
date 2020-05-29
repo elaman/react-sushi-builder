@@ -15,8 +15,8 @@ export default withErrorHandler(() => {
   const [isOrdering, setIsOrdering] = useState(false);
   const history = useHistory();
 
-  const canOrder = Object.values(ingredients).reduce((canOrder, number) => {
-    return !canOrder ? number > 0 : canOrder;
+  const canOrder = Object.values(ingredients).reduce((canOrder, ingredient) => {
+    return !canOrder ? ingredient.quantity > 0 : canOrder;
   }, false);
 
   /*

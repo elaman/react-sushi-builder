@@ -2,23 +2,14 @@ import * as types from "../actions/types";
 
 const initialState = {
   ingredients: {
-    avocadoMaki: 1,
-    avocadoTunaRoll: 1,
-    californiaMaki: 1,
-    californiaTunaRoll: 1,
-    ikuraMaki: 1,
-    salmonMaki: 1,
+    avocadoMaki: { quantity: 1, price: 6.9, label: "Avocado Maki" },
+    avocadoTunaRoll: { quantity: 1, price: 10.12, label: "Avocado Tuna Roll" },
+    californiaMaki: { quantity: 1, price: 8.42, label: "California Maki" },
+    californiaTunaRoll: { quantity: 1, price: 11.11, label: "California Tuna Roll" },
+    ikuraMaki: { quantity: 1, price: 15.32, label: "Ikura Maki" },
+    salmonMaki: { quantity: 1, price: 12.1, label: "Salmon Maki" },
   },
   price: 100,
-};
-
-const PRICES = {
-  avocadoMaki: 6.9,
-  avocadoTunaRoll: 10.12,
-  californiaMaki: 8.42,
-  californiaTunaRoll: 11.11,
-  ikuraMaki: 15.32,
-  salmonMaki: 12.1,
 };
 
 export default (state = initialState, action) => {
@@ -28,9 +19,12 @@ export default (state = initialState, action) => {
         ...state,
         ingredients: {
           ...state.ingredients,
-          [action.ingredient]: state.ingredients[action.ingredient] + 1,
+          [action.ingredient]: {
+            ...state.ingredients[action.ingredient],
+            quantity: state.ingredients[action.ingredient].quantity + 1,
+          },
         },
-        price: state.price + PRICES[action.ingredient],
+        price: state.price + state.ingredients[action.ingredient].price,
       };
 
     case types.REMOVE_INGREDIENT:
@@ -38,9 +32,12 @@ export default (state = initialState, action) => {
         ...state,
         ingredients: {
           ...state.ingredients,
-          [action.ingredient]: state.ingredients[action.ingredient] - 1,
+          [action.ingredient]: {
+            ...state.ingredients[action.ingredient],
+            quantity: state.ingredients[action.ingredient].quantity - 1,
+          },
         },
-        price: state.price - PRICES[action.ingredient],
+        price: state.price - state.ingredients[action.ingredient].price,
       };
 
     default:
