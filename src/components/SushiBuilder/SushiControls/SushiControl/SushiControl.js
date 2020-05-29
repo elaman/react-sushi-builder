@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./SushiControl.module.css";
 import { useDispatch } from "react-redux";
-import { ADD_INGREDIENT, REMOVE_INGREDIENT } from "../../../../store/actions/types";
+import { remove, add } from "../../../../store/actions/builder";
 
 export default ({ control, disabled }) => {
   const dispatch = useDispatch();
@@ -10,9 +10,7 @@ export default ({ control, disabled }) => {
     <div className={classes.SushiControl}>
       <button
         className={classes.less}
-        onClick={() =>
-          dispatch({ type: REMOVE_INGREDIENT, ingredient: control.type })
-        }
+        onClick={() => remove(dispatch, control.type)}
         disabled={disabled}
       >
         -
@@ -20,9 +18,7 @@ export default ({ control, disabled }) => {
       <span className={classes.label}>{control.label}</span>
       <button
         className={classes.more}
-        onClick={() =>
-          dispatch({ type: ADD_INGREDIENT, ingredient: control.type })
-        }
+        onClick={() => add(dispatch, control.type)}
       >
         +
       </button>
