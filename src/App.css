@@ -6,10 +6,18 @@ body {
   padding: 0;
 }
 h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.5rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h1, h2, h3 {
   color: #ec6f31;
   font-family: "Nanum Brush Script", cursive;
   width: 100%;
   text-align: center;
-  font-size: 4rem;
   margin-top: 0;
 }
