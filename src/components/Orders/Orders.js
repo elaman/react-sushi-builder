@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "../../axios";
-import Order from "../../components/Orders/Order/Order";
+import Order from "./Order/Order";
 import classes from "./Orders.module.css";
 import withAxios from "../../hoc/withAxios/withAxios";
-import Spinner from "../../components/UI/Spinner/Spinner";
+import Spinner from "../UI/Spinner/Spinner";
 import { load } from "../../store/actions/orders";
 import { useDispatch, useSelector } from "react-redux";
 
