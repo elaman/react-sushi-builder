@@ -1,0 +1,28 @@
+.Auth {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.5em;
+  max-width: 550px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.Auth form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.Auth input {
+  padding: 0.5em 1em;
+  border: 0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3) inset;
+  border-radius: 1em;
+  font-size: 1.2rem;
+  min-width: 480px;
+  margin-top: 0.5em;
+}
+.Auth input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6) inset;
+}
+.Auth button {
+  margin: 1em 0;
+}

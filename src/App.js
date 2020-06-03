@@ -4,6 +4,7 @@ import Layout from "./containers/Layout/Layout";
 import SushiBuilder from "./containers/SushiBuilder/SushiBuilder";
 import Checkout from "./components/Checkout/Checkout";
 import Orders from "./components/Orders/Orders";
+import Auth from "./components/Auth/Auth";
 import "./App.css";
 
 export default () => {
@@ -22,6 +23,9 @@ export default () => {
           </Route>
           <Route path="/orders">
             <Orders />
+          </Route>
+          <Route path="/auth">
+            <Auth />
           </Route>
         </Switch>
       </Layout>
