@@ -5,8 +5,8 @@ export const start = (dispatch) => dispatch({
   type: AUTH_START
 });
 
-export const success = (dispatch, data) => dispatch({
-  type: AUTH_SUCCESS, data
+export const success = (dispatch, { idToken, localId }) => dispatch({
+  type: AUTH_SUCCESS, id: idToken, token: localId
 });
 
 export const fail = (dispatch, errors) => dispatch({
