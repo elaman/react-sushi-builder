@@ -9,8 +9,8 @@ export const success = (dispatch, { idToken, localId }) => dispatch({
   type: AUTH_SUCCESS, id: idToken, token: localId
 });
 
-export const fail = (dispatch, errors) => dispatch({
-  type: AUTH_FAIL, errors
+export const fail = (dispatch, error) => dispatch({
+  type: AUTH_FAIL, error
 });
 
 export const auth = (dispatch, email, password) => axios
