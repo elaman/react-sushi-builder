@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 export default withAxios(({ loading }) => {
   const history = useHistory();
   const { ingredients, price } = useSelector(state => state.builder);
+  const { token } = useSelector(state => state.auth);
 
   function checkoutCancel() {
     history.push("/builder");
@@ -22,7 +23,7 @@ export default withAxios(({ loading }) => {
 
   function checkoutFinish(data) {
     axios
-      .post("/orders.json", {
+      .post("/orders.json?auth=" + token, {
         ingredients,
         price,
         details: data,
