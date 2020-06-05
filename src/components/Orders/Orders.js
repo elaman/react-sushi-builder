@@ -10,10 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 export default withAxios(() => {
   const dispatch = useDispatch();
   const { orders } = useSelector(state => state.orders);
-  const { token } = useSelector(state => state.auth);
+  const { token, id } = useSelector(state => state.auth);
 
   useEffect(() => {
-    load(dispatch, token);
+    load(dispatch, token, id);
   }, [dispatch, token]);
 
   let ordersOutput = <Spinner />;
