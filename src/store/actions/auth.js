@@ -6,7 +6,7 @@ export const start = (dispatch) => dispatch({
 });
 
 export const success = (dispatch, { idToken, localId }) => dispatch({
-  type: AUTH_SUCCESS, id: idToken, token: localId
+  type: AUTH_SUCCESS, id: localId, token: idToken
 });
 
 export const fail = (dispatch, error) => dispatch({
