@@ -23,7 +23,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.6) inset;
 }
 .Auth button {
-  margin: 1em 0;
+  margin: .5em 0 0 0;
 }
 .Auth .error {
   color: red;
