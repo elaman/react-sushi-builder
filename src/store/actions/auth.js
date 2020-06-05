@@ -17,6 +17,19 @@ export const logout = (dispatch) => dispatch({
   type: AUTH_LOGOUT
 });
 
+export const restore = (dispatch) => {
+  const idToken = localStorage.getItem("idToken");
+  const localId = localStorage.getItem("localId");
+
+  if (idToken && localId) {
+    const expirationDate = new Date(localStorage.getItem("expirationDate"));
+    if (expirationDate > new Date()) {
+      success(dispatch, { idToken, localId });
+      timeout(dispatch, (expirationDate.getTime() - new Date().getTime()) / 1000);
+    }
+  }
+}
+
 export const timeout = (dispatch, seconds) => setTimeout(() => logout(dispatch), seconds * 1000);
 
 const key = "AIzaSyCrbFZwYZA20UbJRbWyM4rA25uOO-u3zXA";
@@ -25,6 +38,8 @@ const signUpUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key
 export const auth = (dispatch, method, email, password) => axios
   .post(method === "signin" ? signInUrl : signUpUrl, { email, password, returnSecureToken: true })
   .then(({ data }) => {
+    const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000);
+    localStorage.setItem("expirationDate", expirationDate);
     localStorage.setItem("idToken", data.idToken);
     localStorage.setItem("localId", data.localId);
 
@@ -32,15 +47,3 @@ export const auth = (dispatch, method, email, password) => axios
     timeout(dispatch, +data.expiresIn);
   })
   .catch(error => fail(dispatch, error));
-
-export const restore = (dispatch) => {
-  const idToken = localStorage.getItem("idToken");
-  const localId = localStorage.getItem("localId");
-
-  if (idToken && localId) {
-    success(dispatch, { idToken, localId })
-  }
-  else {
-    logout(dispatch);
-  }
-}

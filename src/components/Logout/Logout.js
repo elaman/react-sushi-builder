@@ -10,7 +10,7 @@ export default () => {
   useEffect(() => {
     logout(dispatch);
     history.replace("/");
-  });
+  }, [dispatch, history]);
 
   return null;
 }
