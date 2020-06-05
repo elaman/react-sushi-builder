@@ -6,11 +6,13 @@ import classes from "./Auth.module.css";
 import Button from "../UI/Button/Button";
 import Spinner from "../UI/Spinner/Spinner";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useLocation } from "react-router-dom";
 
 export default withAxios(() => {
   const dispatch = useDispatch();
   const [ method, setMethod ] = useState(null);
-  const { loading, error } = useSelector(state => state.auth);
+  const { loading, error, token } = useSelector(state => state.auth);
+  const location = useLocation();
 
   const formSubmitted = (event) => {
     start(dispatch);
@@ -39,10 +41,17 @@ export default withAxios(() => {
     errorOutput = <h4 className={classes.error}>{error.message}</h4>;
   }
 
+  const [,redirect] = location.search.split('?');
+  let redirectOutput = null;
+  if (token !== null) {
+    redirectOutput = <Redirect to={"/" + redirect ? redirect : ""} />;
+  }
+
   return (
     <div className={classes.Auth}>
       {errorOutput}
       {formOutput}
+      {redirectOutput}
     </div>
   );
 }, axios);
