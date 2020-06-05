@@ -13,9 +13,15 @@ export const fail = (dispatch, error) => dispatch({
   type: AUTH_FAIL, error
 });
 
-export const logout = (dispatch) => dispatch({
-  type: AUTH_LOGOUT
-});
+export const logout = (dispatch) => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
+  localStorage.removeItem("expirationDate");
+
+  dispatch({
+    type: AUTH_LOGOUT
+  });
+}
 
 export const restore = (dispatch) => {
   const idToken = localStorage.getItem("idToken");
@@ -27,6 +33,12 @@ export const restore = (dispatch) => {
       success(dispatch, { idToken, localId });
       timeout(dispatch, (expirationDate.getTime() - new Date().getTime()) / 1000);
     }
+    else {
+      logout(dispatch);
+    }
+  }
+  else {
+    logout(dispatch);
   }
 }
 
